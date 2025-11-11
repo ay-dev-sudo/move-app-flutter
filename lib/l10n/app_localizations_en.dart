@@ -106,4 +106,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get verifyemail => 'Verify Email';
+
+  @override
+  String get pickAvatar => 'Pick Avatar';
+
+  @override
+  String get resetPassword => 'Reset Password';
+
+  @override
+  String get deleteAccount => 'Delete Account';
+
+  @override
+  String get updateData => 'Update Data';
+
+  @override
+  String get oldPassword => 'Old Password';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get confirmNewPassword => 'Confirm New Password';
 }

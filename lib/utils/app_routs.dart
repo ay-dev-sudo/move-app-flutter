@@ -4,5 +4,7 @@ class AppRouts{
   static const String registerRouteName="Register";
   static const String loginRouteName="Login";
   static const String onbord1RouteName="Onbord1";
+  static const String updateProfileRouteName="update_profile";
+  static const String resetPasswordRouteName="reset_pass";
 
 }

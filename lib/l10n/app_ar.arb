@@ -30,7 +30,15 @@
   "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
   "register": "إنشاء حساب",
   "forget": "نسيت كلمة المرور",
-  "verifyemail": "تحقق من البريد الإلكتروني"
+  "verifyemail": "تحقق من البريد الإلكتروني",
+  "pickAvatar" : "اختر الصورة الرمزية",
+  "resetPassword" : "إعادة تعيين كلمة المرور",
+  "deleteAccount" : "حذف الحساب",
+  "updateData" : "تحديث البيانات",
+  "oldPassword" : "كلمة المرور القديمة",
+  "newPassword" : "كلمة المرور الجديدة",
+  "confirmNewPassword" : "تأكيد كلمة المرور الجديدة"
+
 
 
 }

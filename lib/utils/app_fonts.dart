@@ -54,4 +54,9 @@ class AppFonts {
     fontWeight: FontWeight.normal,
     color: AppColor.whait,
   );
+  static final TextStyle regular20black = GoogleFonts.inter(
+    fontSize: 20,
+    fontWeight: FontWeight.normal,
+    color: AppColor.black,
+  );
 }

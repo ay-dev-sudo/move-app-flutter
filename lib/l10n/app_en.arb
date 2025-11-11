@@ -30,5 +30,12 @@
   "alreadyHaveAccount": "Already Have Account ?",
    "register":"Register",
    "forget":"Forget Password",
-   "verifyemail":"Verify Email"
+   "verifyemail":"Verify Email",
+    "pickAvatar" : "Pick Avatar",
+    "resetPassword" : "Reset Password",
+    "deleteAccount" : "Delete Account",
+    "updateData" : "Update Data",
+    "oldPassword" : "Old Password",
+    "newPassword" : "New Password",
+    "confirmNewPassword" : "Confirm New Password"
 }

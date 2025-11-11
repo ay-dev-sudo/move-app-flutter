@@ -105,4 +105,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get verifyemail => 'تحقق من البريد الإلكتروني';
+
+  @override
+  String get pickAvatar => 'اختر الصورة الرمزية';
+
+  @override
+  String get resetPassword => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get deleteAccount => 'حذف الحساب';
+
+  @override
+  String get updateData => 'تحديث البيانات';
+
+  @override
+  String get oldPassword => 'كلمة المرور القديمة';
+
+  @override
+  String get newPassword => 'كلمة المرور الجديدة';
+
+  @override
+  String get confirmNewPassword => 'تأكيد كلمة المرور الجديدة';
 }

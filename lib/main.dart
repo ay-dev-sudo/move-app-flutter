@@ -7,6 +7,8 @@ import 'package:move/auth/register.dart';
 import 'package:move/onbordscreen.dart';
 import 'package:move/onbord1.dart';
 import 'package:move/provider/languaged_provider.dart';
+import 'package:move/tabs/profile/update_profile/reset_password/reset_password.dart';
+import 'package:move/tabs/profile/update_profile/update_profile.dart';
 import 'package:move/utils/app_routs.dart';
 import 'package:provider/provider.dart';
 
@@ -49,6 +51,9 @@ class MyApp extends StatelessWidget {
         AppRouts.loginRouteName: (context) => const Login(),
         AppRouts.registerRouteName: (context) => const Register(),
         AppRouts.forgetRouteName: (context) => const Forget(),
+        AppRouts.updateProfileRouteName: (context) => const UpdateProfile(),
+        AppRouts.resetPasswordRouteName: (context) =>  ResetPassword(),
+
       },
     );
   }

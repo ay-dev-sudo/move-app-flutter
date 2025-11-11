@@ -5,6 +5,7 @@ import 'package:move/auth/register.dart';
 import 'package:move/utils/app_assets.dart';
 import 'package:move/utils/app_color.dart';
 import 'package:move/utils/app_fonts.dart';
+import 'package:move/utils/app_routs.dart';
 import 'package:move/widget/custom_bottom.dart';
 import 'package:move/widget/custom_text_faild.dart';
 import 'package:move/widget/switch.dart';
@@ -77,8 +78,9 @@ class Login extends StatelessWidget {
           
               InkWell(
                 onTap: (){
-if(formkey.currentState!.validate()){
-  print("Success login");
+                  Navigator.of(context).pushReplacementNamed(AppRouts.updateProfileRouteName);
+              if(formkey.currentState!.validate()){
+              print("Success login");
 }
                 },
                 child: CustomButton(
