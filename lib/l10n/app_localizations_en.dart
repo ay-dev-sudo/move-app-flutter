@@ -127,4 +127,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get confirmNewPassword => 'Confirm New Password';
+
+  @override
+  String get pleaseEnterEmail => 'Please Enter an Email';
+
+  @override
+  String get pleaseEnterValidEmail => 'Please Enter a Valid Email';
+
+  @override
+  String get pleaseEnterPassword => 'Please Enter a Password';
+
+  @override
+  String get pleaseEnterAtLeast8Char => 'Please Enter at Least 8 Characters';
+
+  @override
+  String get pleaseEnterName => 'Please Enter a Name';
+
+  @override
+  String get rePasswordMustMatch => 'Re-entered Password Must Match';
+
+  @override
+  String get pleaseEnterPhone => 'Please Enter a Phone';
 }

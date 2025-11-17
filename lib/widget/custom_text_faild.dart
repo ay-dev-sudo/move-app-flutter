@@ -10,12 +10,19 @@ class CustomTextField extends StatefulWidget {
     required this.isPassword,
     required this.controller,
     required this.icon,
+    this.validator,
+    this.keyboardType = TextInputType.text,
+
   });
 
   final String hint;
   final bool isPassword;
   final Widget icon;
   final TextEditingController controller;
+  final String? Function(String?)? validator;
+
+  final TextInputType? keyboardType;
+
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -36,12 +43,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
       controller: widget.controller,
       obscureText: _obscureText,
       style: AppFonts.regular20white,
-      validator: (v) {
-        if (v == null || v.isEmpty) {
-          return 'Please fill ${widget.hint}';
-        }
-        return null;
-      },
+      validator: widget.validator,
+      keyboardType: widget.keyboardType,
       decoration: InputDecoration(
         hintText: widget.hint,
         hintStyle: AppFonts.regular16white,

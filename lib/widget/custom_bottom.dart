@@ -7,12 +7,12 @@ class CustomButton extends StatelessWidget {
   final TextStyle textFont;
   final Color color;
   final Color borderColor;
-  final VoidCallback? onTap;
+  void Function()? onTap;
   final double width;
   final double height;
   final Widget? icon;
 
-  const CustomButton({
+   CustomButton({
     super.key,
     required this.text,
     required this.color,

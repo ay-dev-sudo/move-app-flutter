@@ -126,4 +126,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get confirmNewPassword => 'تأكيد كلمة المرور الجديدة';
+
+  @override
+  String get pleaseEnterEmail => 'من فضلك أدخل البريد الإلكتروني';
+
+  @override
+  String get pleaseEnterValidEmail => 'من فضلك أدخل بريداً إلكترونياً صالحاً';
+
+  @override
+  String get pleaseEnterPassword => 'من فضلك أدخل كلمة المرور';
+
+  @override
+  String get pleaseEnterAtLeast8Char => 'من فضلك أدخل على الأقل 8 أحرف';
+
+  @override
+  String get pleaseEnterName => 'من فضلك أدخل الاسم';
+
+  @override
+  String get rePasswordMustMatch => 'يجب أن تتطابق كلمة المرور المعاد إدخالها';
+
+  @override
+  String get pleaseEnterPhone => 'من فضلك ادخل رقم هاتف';
 }

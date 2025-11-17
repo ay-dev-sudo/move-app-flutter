@@ -325,6 +325,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Confirm New Password'**
   String get confirmNewPassword;
+
+  /// No description provided for @pleaseEnterEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter an Email'**
+  String get pleaseEnterEmail;
+
+  /// No description provided for @pleaseEnterValidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter a Valid Email'**
+  String get pleaseEnterValidEmail;
+
+  /// No description provided for @pleaseEnterPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter a Password'**
+  String get pleaseEnterPassword;
+
+  /// No description provided for @pleaseEnterAtLeast8Char.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter at Least 8 Characters'**
+  String get pleaseEnterAtLeast8Char;
+
+  /// No description provided for @pleaseEnterName.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter a Name'**
+  String get pleaseEnterName;
+
+  /// No description provided for @rePasswordMustMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Re-entered Password Must Match'**
+  String get rePasswordMustMatch;
+
+  /// No description provided for @pleaseEnterPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Enter a Phone'**
+  String get pleaseEnterPhone;
 }
 
 class _AppLocalizationsDelegate

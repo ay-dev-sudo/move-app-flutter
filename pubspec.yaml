@@ -19,6 +19,9 @@ dependencies:
   google_fonts: ^6.3.2
   flutter_switch: ^0.3.2
   provider: ^6.1.5+1
+  dio: ^5.9.0
+  shared_preferences: ^2.5.3
+
 
 dev_dependencies:
   flutter_test:

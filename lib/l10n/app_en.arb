@@ -37,5 +37,12 @@
     "updateData" : "Update Data",
     "oldPassword" : "Old Password",
     "newPassword" : "New Password",
-    "confirmNewPassword" : "Confirm New Password"
+    "confirmNewPassword" : "Confirm New Password",
+  "pleaseEnterEmail": "Please Enter an Email",
+  "pleaseEnterValidEmail": "Please Enter a Valid Email",
+  "pleaseEnterPassword": "Please Enter a Password",
+  "pleaseEnterAtLeast8Char": "Please Enter at Least 8 Characters",
+  "pleaseEnterName": "Please Enter a Name",
+  "rePasswordMustMatch": "Re-entered Password Must Match",
+  "pleaseEnterPhone": "Please Enter a Phone"
 }
