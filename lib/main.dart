@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: AppLocalizations.supportedLocales,
 
 
-      initialRoute: AppRouts.homeScreenRouteName,
+      initialRoute: AppRouts.onbord1RouteName,
 
 
       routes: {
