@@ -6,5 +6,6 @@ class AppRouts{
   static const String onbord1RouteName="Onbord1";
   static const String updateProfileRouteName="update_profile";
   static const String resetPasswordRouteName="reset_pass";
+  static const String homeScreenRouteName="home_screen";
 
 }

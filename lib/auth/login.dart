@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:move/api/api_service%20.dart';
 import 'package:move/auth/forget.dart';
 import 'package:move/auth/register.dart';
@@ -182,6 +183,9 @@ class _LoginState extends State<Login> {
               SizedBox(height: height * 0.035),
 
               CustomButton(text: AppLocalizations.of(context)!.loginWithGoogle,
+               onTap: () {
+                 loginWithGoogle(context);
+               },
                 color: AppColor.yellow,
                 borderColor: AppColor.yellow,
                 width: width * 0.93,
@@ -251,6 +255,36 @@ class _LoginState extends State<Login> {
           title: "error",
         );
       }
+    }
+  }
+  loginWithGoogle(BuildContext context) async {
+    try {
+      GoogleSignIn googleSignIn = GoogleSignIn();
+      GoogleSignInAccount? account = await googleSignIn.signIn();
+
+      if (account != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("success login with google"),
+            backgroundColor: Colors.green,
+          ),
+        );
+
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Login canceled"),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Error: $e"),
+          backgroundColor: Colors.red,
+        ),
+      );
     }
   }
 }

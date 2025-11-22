@@ -12,6 +12,8 @@ import 'package:move/tabs/profile/update_profile/update_profile.dart';
 import 'package:move/utils/app_routs.dart';
 import 'package:provider/provider.dart';
 
+import 'home_screen/home_screen.dart';
+
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
@@ -54,6 +56,7 @@ class MyApp extends StatelessWidget {
         AppRouts.forgetRouteName: (context) => const Forget(),
         AppRouts.updateProfileRouteName: (context) => const UpdateProfile(),
         AppRouts.resetPasswordRouteName: (context) =>  ResetPassword(),
+        AppRouts.homeScreenRouteName: (context) =>  HomeScreen(),
 
       },
     );
