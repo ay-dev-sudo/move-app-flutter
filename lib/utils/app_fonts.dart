@@ -44,6 +44,11 @@ class AppFonts {
     fontWeight: FontWeight.normal,
     color: AppColor.whait,
   );
+  static final TextStyle regular16Yellow = GoogleFonts.inter(
+    fontSize: 16,
+    fontWeight: FontWeight.normal,
+    color: AppColor.yellow,
+  );
   static final TextStyle regular14yellow = GoogleFonts.inter(
     fontSize: 14,
     fontWeight: FontWeight.normal,

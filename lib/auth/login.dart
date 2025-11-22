@@ -240,7 +240,7 @@ class _LoginState extends State<Login> {
             pos: "Ok",
             posAction: () {
               Navigator.of(context).pushNamedAndRemoveUntil(
-                AppRouts.updateProfileRouteName,
+                AppRouts.homeScreenRouteName,
                     (route) => false,
               );
             },
