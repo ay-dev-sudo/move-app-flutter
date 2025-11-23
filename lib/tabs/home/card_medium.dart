@@ -5,9 +5,9 @@ import 'package:move/utils/app_assets.dart';
 import 'package:move/utils/app_color.dart';
 import 'package:move/utils/app_fonts.dart';
 
-class CarouselSliderCardMedium extends StatelessWidget {
-  const CarouselSliderCardMedium({super.key, required this.movie});
-  final Movies movie; // <-- النوع هنا Movies
+class CardMedium extends StatelessWidget {
+  const CardMedium({super.key, required this.movie});
+  final Movies movie;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class CarouselSliderCardMedium extends StatelessWidget {
                 Flexible(
                   flex: 1,
                   child: Text(
-                    "${movie.rating ?? 'N/A'}",
+                    "${movie.rating ?? ''}",
                     style: AppFonts.regular16white,
                     overflow: TextOverflow.ellipsis,
                   ),

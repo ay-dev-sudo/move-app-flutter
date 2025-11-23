@@ -8,7 +8,7 @@ import 'package:move/utils/app_fonts.dart';
 import '../../api/api_service .dart';
 import '../../model/MoviesResponse.dart';
 import 'carousel_slider_card_large.dart';
-import 'carousel_slider_card_medium.dart';
+import 'card_medium.dart';
 class HomeTap extends StatefulWidget {
   const HomeTap({super.key});
 
@@ -134,7 +134,7 @@ class _HomeTapState extends State<HomeTap> {
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        return CarouselSliderCardMedium(movie: moviesList[index]);
+                        return CardMedium(movie: moviesList[index]);
                       },
                       separatorBuilder: (context, index) =>
                           SizedBox(width: width * 0.06),

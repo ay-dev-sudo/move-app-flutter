@@ -46,7 +46,7 @@ class CarouselSliderCardLarge extends StatelessWidget {
                 Flexible(
                   flex: 1,
                   child: Text(
-                    "${movie.rating ?? 'N/A'}",
+                    "${movie.rating ?? ''}",
                     style: AppFonts.regular16white,
                     overflow: TextOverflow.ellipsis,
                   ),
