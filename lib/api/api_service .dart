@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:move/api/end_points.dart';
 import 'package:move/model/GetProfile.dart';
-import 'package:move/model/UpdateProfile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../model/LoginResponse.dart';
+import '../model/MoviesResponse.dart';
 import '../model/RegisterResponse.dart';
 import 'api_constants.dart';
  class ApiService {
@@ -164,4 +164,25 @@ import 'api_constants.dart';
       }
     }
   }
+
+    Future<MoviesResponse> getMovieList({String genre=''}) async {
+      try {
+        final response = await dio.get(EndPoints.getMovieListApi
+        ,
+            queryParameters: {
+              "genre":genre,
+            }
+        );
+
+        return MoviesResponse.fromJson(response.data);
+
+      }
+      on DioException catch (e) {
+        if (e.response != null) {
+          throw Exception("Error: ${e.response?.data}");
+        } else {
+          rethrow;
+        }
+      }
+    }
   }

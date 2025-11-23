@@ -22,6 +22,9 @@ dependencies:
   dio: ^5.9.0
   shared_preferences: ^2.5.3
   google_sign_in: ^6.1.0
+  carousel_slider: ^5.1.1
+  cached_network_image: ^3.4.1
+  animated_bottom_navigation_bar: ^1.4.0
 
 
 
