@@ -7,5 +7,7 @@ class AppRouts{
   static const String updateProfileRouteName="update_profile";
   static const String resetPasswordRouteName="reset_pass";
   static const String homeScreenRouteName="home_screen";
+  static const String movieDetailsScreenRouteName="movie_details_screen";
+  static const String exploreTapScreenRouteName="explore_tap";
 
 }

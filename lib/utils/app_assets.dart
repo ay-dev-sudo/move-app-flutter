@@ -34,4 +34,10 @@ class AppAssets{
   static const String availableNow = 'assets/images/Available Now.png';
   static const String watchNow = 'assets/images/Watch Now.png';
   static const String star = 'assets/images/star.png';
+  static const String watchListIcon = 'assets/images/watch_list_icon.png';
+  static const String starYellow = 'assets/images/star_yellow.png';
+  static const String loveYellow = 'assets/images/love_yellow.png';
+  static const String timeYellow = 'assets/images/time_yellow.png';
+  static const String cast1 = 'assets/images/cast1.png';
+  static const String watch = 'assets/images/watch.png';
 }

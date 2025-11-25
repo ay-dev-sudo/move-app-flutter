@@ -4,17 +4,16 @@ import 'package:move/utils/app_assets.dart';
 import 'package:move/utils/app_color.dart';
 import 'package:move/utils/app_fonts.dart';
 
-import '../../model/MoviesResponse.dart';
+import '../../../../model/MovieSuggestionsResponse.dart';
 
-class CarouselSliderCardLarge extends StatelessWidget {
-  const CarouselSliderCardLarge({super.key, required this.movie});
+class SimilarMovieCard extends StatelessWidget {
+  const SimilarMovieCard({super.key, required this.movie});
   final Movies movie;
 
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-
     return Stack(
       children: [
         Container(
@@ -22,8 +21,9 @@ class CarouselSliderCardLarge extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
           ),
-          child: CachedNetworkImage(
-            imageUrl: movie.largeCoverImage??"",
+          child:
+          CachedNetworkImage(
+            imageUrl: movie.mediumCoverImage??"",
             placeholder: (context, url) =>
                 Center(child: CircularProgressIndicator(color: AppColor.yellow)),
             errorWidget: (context, url, error) =>
@@ -32,10 +32,8 @@ class CarouselSliderCardLarge extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child:
-          Container(
-            width: width * 0.14,
-            height: height*0.03,
+          child: Container(
+            width: width * 0.12,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: AppColor.blackOp71,

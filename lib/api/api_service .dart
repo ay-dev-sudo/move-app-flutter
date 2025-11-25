@@ -4,6 +4,8 @@ import 'package:move/model/GetProfile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../model/LoginResponse.dart';
+import '../model/MovieDetailsResponse.dart';
+import '../model/MovieSuggestionsResponse.dart';
 import '../model/MoviesResponse.dart';
 import '../model/RegisterResponse.dart';
 import 'api_constants.dart';
@@ -165,16 +167,57 @@ import 'api_constants.dart';
     }
   }
 
-    Future<MoviesResponse> getMovieList({String genre=''}) async {
+    Future<MoviesResponse> getMovieList({String genre='',String sort_by="" }) async {
       try {
         final response = await dio.get(EndPoints.getMovieListApi
         ,
             queryParameters: {
               "genre":genre,
+              "sort_by":sort_by,
             }
         );
 
         return MoviesResponse.fromJson(response.data);
+
+      }
+      on DioException catch (e) {
+        if (e.response != null) {
+          throw Exception("Error: ${e.response?.data}");
+        } else {
+          rethrow;
+        }
+      }
+    }
+    Future<MovieDetailsResponse> getMovieDetails({int movie_id=1}) async {
+      try {
+        final response = await dio.get(EndPoints.getMovieDetailsApi
+        ,
+            queryParameters: {
+              "movie_id":movie_id,
+            }
+        );
+        print(response.data);
+
+        return MovieDetailsResponse.fromJson(response.data);
+
+      }
+      on DioException catch (e) {
+        if (e.response != null) {
+          throw Exception("Error: ${e.response?.data}");
+        } else {
+          rethrow;
+        }
+      }
+    }
+
+    Future<MovieSuggestionsResponse> getMovieSuggestions({int movie_id=1}) async {
+      try {
+        final response = await dio.get(EndPoints.getMovieSuggestionsApi,
+            queryParameters: {
+              "movie_id":movie_id,
+            }
+        );
+        return MovieSuggestionsResponse.fromJson(response.data);
 
       }
       on DioException catch (e) {

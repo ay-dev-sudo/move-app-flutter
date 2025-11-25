@@ -29,6 +29,11 @@ class AppFonts {
     fontWeight: FontWeight.normal,
     color: AppColor.whait,
   );
+  static final TextStyle regular20bold = GoogleFonts.inter(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    color: AppColor.whait,
+  );
   static final TextStyle regular20yellow = GoogleFonts.inter(
     fontSize: 20,
     fontWeight: FontWeight.normal,

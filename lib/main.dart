@@ -7,6 +7,8 @@ import 'package:move/auth/register.dart';
 import 'package:move/onbordscreen.dart';
 import 'package:move/onbord1.dart';
 import 'package:move/provider/languaged_provider.dart';
+import 'package:move/tabs/explore/explore_tap.dart';
+import 'package:move/tabs/home/movie_details_screen/movie_details_screen.dart';
 import 'package:move/tabs/profile/update_profile/reset_password/reset_password.dart';
 import 'package:move/tabs/profile/update_profile/update_profile.dart';
 import 'package:move/utils/app_routs.dart';
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: AppLocalizations.supportedLocales,
 
 
-      initialRoute: AppRouts.onbord1RouteName,
+      initialRoute: AppRouts.homeScreenRouteName,
 
 
       routes: {
@@ -57,6 +59,8 @@ class MyApp extends StatelessWidget {
         AppRouts.updateProfileRouteName: (context) => const UpdateProfile(),
         AppRouts.resetPasswordRouteName: (context) =>  ResetPassword(),
         AppRouts.homeScreenRouteName: (context) =>  HomeScreen(),
+        AppRouts.movieDetailsScreenRouteName: (context) =>  MovieDetailsScreen(),
+        AppRouts.exploreTapScreenRouteName: (context) =>  ExploreTap(),
 
       },
     );
