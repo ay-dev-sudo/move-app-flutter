@@ -159,12 +159,19 @@ class _HomeTapState extends State<HomeTap> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(genre, style: AppFonts.regular20white),
-                    Row(
-                      children: [
-                        Text("See More", style: AppFonts.regular16Yellow),
-                        Icon(Icons.arrow_forward_ios,
-                            size: 15, color: AppColor.yellow),
-                      ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushNamed(AppRouts.browseTapScreenRouteName,
+                        arguments: genre
+                        );
+                      },
+                      child: Row(
+                        children: [
+                          Text("See More", style: AppFonts.regular16Yellow),
+                          Icon(Icons.arrow_forward_ios,
+                              size: 15, color: AppColor.yellow),
+                        ],
+                      ),
                     ),
                   ],
                 ),

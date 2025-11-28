@@ -167,13 +167,15 @@ import 'api_constants.dart';
     }
   }
 
-    Future<MoviesResponse> getMovieList({String genre='',String sort_by="" }) async {
+    Future<MoviesResponse> getMovieList({String? genre,String? sort_by,String? searchByName,int?  limit}) async {
       try {
         final response = await dio.get(EndPoints.getMovieListApi
         ,
             queryParameters: {
               "genre":genre,
               "sort_by":sort_by,
+              "query_term":searchByName,
+              "limit":limit
             }
         );
 

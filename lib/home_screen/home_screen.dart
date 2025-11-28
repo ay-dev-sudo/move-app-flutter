@@ -33,31 +33,35 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColor.transparentColor,
       body: tabs[selectedIndex],
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(right: width * 0.01,left: width * 0.01,bottom: height * 0.01 ),
-        child: AnimatedBottomNavigationBar(
-          icons: [
-            Icons.home,
-            Icons.search,
-            Icons.explore,
-            Icons.person,
-          ],
-          height: height*0.04,
-          iconSize: 30,
-          leftCornerRadius: 16,
-          rightCornerRadius: 16,
-          activeIndex: selectedIndex,
-          gapLocation: GapLocation.none,
-          notchSmoothness: NotchSmoothness.verySmoothEdge,
-          backgroundColor: AppColor.silver,
-
-          activeColor: AppColor.yellow,
-          splashColor: AppColor.red,
-          inactiveColor: AppColor.white,
-          onTap: (index) {
-            setState(() {
-              selectedIndex = index;
-            });
-          },
+        padding: EdgeInsets.only(right: width * 0.01,left: width * 0.01,bottom: height * 0.01,top: height * 0.01 ),
+        child: Container(
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            color: AppColor.transparentColor
+          ),
+          child: AnimatedBottomNavigationBar(
+            icons: [
+              Icons.home,
+              Icons.search,
+              Icons.explore,
+              Icons.person,
+            ],
+            height: height*0.04,
+            iconSize: 35,
+            activeIndex: selectedIndex,
+            gapLocation: GapLocation.none,
+            notchSmoothness: NotchSmoothness.verySmoothEdge,
+            backgroundColor: AppColor.silver,
+            activeColor: AppColor.yellow,
+            splashColor: AppColor.red,
+            inactiveColor: AppColor.white,
+            onTap: (index) {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+          ),
         ),
       ),
     );

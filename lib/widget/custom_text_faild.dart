@@ -4,14 +4,14 @@ import 'package:move/utils/app_color.dart';
 import 'package:move/utils/app_fonts.dart';
 
 class CustomTextField extends StatefulWidget {
-  const CustomTextField({
+   CustomTextField({
     super.key,
     required this.hint,
     required this.isPassword,
     required this.controller,
     required this.icon,
     this.validator,
-    this.keyboardType = TextInputType.text,
+    this.keyboardType = TextInputType.text,  this.onChanged,
 
   });
 
@@ -22,6 +22,7 @@ class CustomTextField extends StatefulWidget {
   final String? Function(String?)? validator;
 
   final TextInputType? keyboardType;
+  void Function(String)? onChanged;
 
 
   @override
@@ -42,6 +43,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return TextFormField(
       controller: widget.controller,
       obscureText: _obscureText,
+      onChanged: widget.onChanged,
       style: AppFonts.regular20white,
       validator: widget.validator,
       keyboardType: widget.keyboardType,

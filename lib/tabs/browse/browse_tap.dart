@@ -26,14 +26,14 @@ class _BrowseTapState extends State<BrowseTap> {
   @override
   void initState() {
     super.initState();
-    moviesFuture = ApiService().getMovieList();
+    moviesFuture = ApiService().getMovieList(limit: 50);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       genreFromArgs = ModalRoute.of(context)?.settings.arguments as String?;
     });
   }
 
   void loadMoviesByGenre(String genre) {
-    moviesByGenreFuture = ApiService().getMovieList(genre: genre);
+    moviesByGenreFuture = ApiService().getMovieList(genre: genre,limit: 50);
   }
 
   @override
