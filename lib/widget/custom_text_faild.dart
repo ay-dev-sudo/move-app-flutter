@@ -70,7 +70,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             _obscureText
                 ? CupertinoIcons.eye_slash
                 : CupertinoIcons.eye,
-            color: AppColor.whait,
+            color: AppColor.white,
           ),
         )
             : null,

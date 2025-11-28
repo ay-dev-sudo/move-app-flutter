@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:move/l10n/app_localizations.dart';
-import 'package:move/onbordscreen.dart';
+import 'package:move/on_bording_screen/onbordscreen.dart';
 import 'package:move/utils/app_assets.dart';
 import 'package:move/utils/app_color.dart';
 import 'package:move/utils/app_fonts.dart';

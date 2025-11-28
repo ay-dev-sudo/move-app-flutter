@@ -7,7 +7,12 @@ class AppFonts {
   static final TextStyle mediam36White = GoogleFonts.inter(
     fontSize: 36,
     fontWeight: FontWeight.normal,
-    color: AppColor.whait,
+    color: AppColor.white,
+  );
+  static final TextStyle bold20White = GoogleFonts.inter(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    color: AppColor.white,
   );
   static final TextStyle regular20gray = GoogleFonts.inter(
     fontSize: 20,
@@ -27,12 +32,12 @@ class AppFonts {
   static final TextStyle regular20white = GoogleFonts.inter(
     fontSize: 20,
     fontWeight: FontWeight.normal,
-    color: AppColor.whait,
+    color: AppColor.white,
   );
-  static final TextStyle regular20bold = GoogleFonts.inter(
+  static final TextStyle bold20white = GoogleFonts.inter(
     fontSize: 20,
     fontWeight: FontWeight.bold,
-    color: AppColor.whait,
+    color: AppColor.white,
   );
   static final TextStyle regular20yellow = GoogleFonts.inter(
     fontSize: 20,
@@ -42,12 +47,12 @@ class AppFonts {
   static final TextStyle regular24white = GoogleFonts.inter(
     fontSize: 24,
     fontWeight: FontWeight.normal,
-    color: AppColor.whait,
+    color: AppColor.white,
   );
   static final TextStyle regular16white = GoogleFonts.inter(
     fontSize: 16,
     fontWeight: FontWeight.normal,
-    color: AppColor.whait,
+    color: AppColor.white,
   );
   static final TextStyle regular16Yellow = GoogleFonts.inter(
     fontSize: 16,
@@ -62,11 +67,21 @@ class AppFonts {
   static final TextStyle regular14white = GoogleFonts.inter(
     fontSize: 14,
     fontWeight: FontWeight.normal,
-    color: AppColor.whait,
+    color: AppColor.white,
   );
   static final TextStyle regular20black = GoogleFonts.inter(
     fontSize: 20,
     fontWeight: FontWeight.normal,
     color: AppColor.black,
+  );
+  static final TextStyle bold20black = GoogleFonts.inter(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    color: AppColor.black,
+  );
+  static final TextStyle bold20yellow = GoogleFonts.inter(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    color: AppColor.yellow,
   );
 }

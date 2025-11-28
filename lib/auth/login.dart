@@ -61,7 +61,7 @@ class _LoginState extends State<Login> {
                   controller: emailController,
                   icon: ImageIcon(
                     AssetImage(AppAssets.email),
-                    color: AppColor.whait,
+                    color: AppColor.white,
                   ),
                   validator: (email) {
                     if (email == null || email
@@ -88,7 +88,7 @@ class _LoginState extends State<Login> {
                 controller: passwordController,
                 icon: ImageIcon(
                   AssetImage(AppAssets.pas),
-                  color: AppColor.whait,
+                  color: AppColor.white,
                 ),
                 validator:(text) {
                   if (text==null || text.trim().isEmpty) {

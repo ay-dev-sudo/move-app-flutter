@@ -32,7 +32,7 @@ class Forget extends StatelessWidget {
           children: [
             Image.asset(AppAssets.forget),
         SizedBox(height: height*0.03,),
-            CustomTextField(hint:AppLocalizations.of(context)!.email, isPassword: false, controller: emailController, icon: ImageIcon(AssetImage(AppAssets.email),color: AppColor.whait,)),
+            CustomTextField(hint:AppLocalizations.of(context)!.email, isPassword: false, controller: emailController, icon: ImageIcon(AssetImage(AppAssets.email),color: AppColor.white,)),
             SizedBox(height: height*0.02,),
             CustomButton(text:AppLocalizations.of(context)!.verifyemail, color:AppColor.yellow, borderColor: AppColor.yellow, width: width*0.93, height: height*0.06, textFont: AppFonts.inter20black)
           ],

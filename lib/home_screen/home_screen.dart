@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:move/tabs/explore/explore_tap.dart';
 import 'package:move/utils/app_color.dart';
 
+import '../tabs/browse/browse_tap.dart';
 import '../tabs/home/home_tap.dart';
 import '../tabs/profile/update_profile/update_profile.dart';
 import '../tabs/search/search_tap.dart';
@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> tabs = [
     HomeTap(),
     SearchTap(),
-    ExploreTap(),
+    BrowseTap(),
     UpdateProfile(),
   ];
 
@@ -30,35 +30,34 @@ class _HomeScreenState extends State<HomeScreen> {
     var height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: AppColor.black,
+      backgroundColor: AppColor.transparentColor,
       body: tabs[selectedIndex],
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: width * 0.01, vertical: height * 0.01),
-        child: Container(
-          decoration: BoxDecoration(
-            color: AppColor.silver,
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: AnimatedBottomNavigationBar(
-            icons: [
-              Icons.home,
-              Icons.search,
-              Icons.explore,
-              Icons.person,
-            ],
-            height: height*0.04,
-            activeIndex: selectedIndex,
-            gapLocation: GapLocation.none,
-            notchSmoothness: NotchSmoothness.verySmoothEdge,
-            backgroundColor: Colors.transparent,
-            activeColor: AppColor.yellow,
-            inactiveColor: AppColor.whait,
-            onTap: (index) {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-          ),
+        padding: EdgeInsets.only(right: width * 0.01,left: width * 0.01,bottom: height * 0.01 ),
+        child: AnimatedBottomNavigationBar(
+          icons: [
+            Icons.home,
+            Icons.search,
+            Icons.explore,
+            Icons.person,
+          ],
+          height: height*0.04,
+          iconSize: 30,
+          leftCornerRadius: 16,
+          rightCornerRadius: 16,
+          activeIndex: selectedIndex,
+          gapLocation: GapLocation.none,
+          notchSmoothness: NotchSmoothness.verySmoothEdge,
+          backgroundColor: AppColor.silver,
+
+          activeColor: AppColor.yellow,
+          splashColor: AppColor.red,
+          inactiveColor: AppColor.white,
+          onTap: (index) {
+            setState(() {
+              selectedIndex = index;
+            });
+          },
         ),
       ),
     );

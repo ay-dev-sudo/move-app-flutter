@@ -160,7 +160,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           icon: const Icon(
                             Icons.arrow_back_ios_new_outlined,
                             size: 35,
-                            color: AppColor.whait,
+                            color: AppColor.white,
                           ),
                         ),
                         Padding(
@@ -222,7 +222,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                   height: height * 0.07,
                   text: "Watch",
                   borderColor: AppColor.transparentColor,
-                  textFont: AppFonts.regular20bold,
+                  textFont: AppFonts.bold20white,
                   onTap: () async {
                     final Uri uri = Uri.tryParse(movieDetails!.url) ?? Uri();
                     if (await canLaunchUrl(uri)) {
@@ -369,8 +369,8 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                               child: TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pushNamed(
-                                    AppRouts.exploreTapScreenRouteName,
-                                    arguments: movieDetails!.genres![index],
+                                    AppRouts.browseTapScreenRouteName,
+                                    arguments: movieDetails!.genres[index],
                                   );
                                 },
                                 child: Text(

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:move/onbord2.dart';
-import 'package:move/onbordscreen.dart';
+import 'package:move/on_bording_screen/onbord2.dart';
+import 'package:move/on_bording_screen/onbordscreen.dart';
 import 'package:move/utils/app_assets.dart';
 import 'package:move/utils/app_color.dart';
 import 'package:move/utils/app_fonts.dart';
 import 'package:move/widget/custom_bottom.dart';
-import '../l10n/app_localizations.dart';
+import '../../l10n/app_localizations.dart';
 
 class Onbord1 extends StatelessWidget {
   const Onbord1({super.key});

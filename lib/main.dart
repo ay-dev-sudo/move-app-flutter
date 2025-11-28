@@ -4,10 +4,10 @@ import 'package:move/l10n/app_localizations.dart';
 import 'package:move/auth/forget.dart';
 import 'package:move/auth/login.dart';
 import 'package:move/auth/register.dart';
-import 'package:move/onbordscreen.dart';
-import 'package:move/onbord1.dart';
+import 'package:move/on_bording_screen/onbordscreen.dart';
+import 'package:move/on_bording_screen/onbord1.dart';
 import 'package:move/provider/languaged_provider.dart';
-import 'package:move/tabs/explore/explore_tap.dart';
+import 'package:move/tabs/browse/browse_tap.dart';
 import 'package:move/tabs/home/movie_details_screen/movie_details_screen.dart';
 import 'package:move/tabs/profile/update_profile/reset_password/reset_password.dart';
 import 'package:move/tabs/profile/update_profile/update_profile.dart';
@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
         AppRouts.resetPasswordRouteName: (context) =>  ResetPassword(),
         AppRouts.homeScreenRouteName: (context) =>  HomeScreen(),
         AppRouts.movieDetailsScreenRouteName: (context) =>  MovieDetailsScreen(),
-        AppRouts.exploreTapScreenRouteName: (context) =>  ExploreTap(),
+        AppRouts.browseTapScreenRouteName: (context) =>  BrowseTap(),
 
       },
     );
