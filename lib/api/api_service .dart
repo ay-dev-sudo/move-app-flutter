@@ -1,8 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:move/api/end_points.dart';
 import 'package:move/model/GetProfile.dart';
+import 'package:move/model/MovieIsFavorite.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../model/AddMovieToFavorite.dart';
+import '../model/GetAllFavoritesMovies.dart';
 import '../model/LoginResponse.dart';
 import '../model/MovieDetailsResponse.dart';
 import '../model/MovieSuggestionsResponse.dart';
@@ -230,4 +233,105 @@ import 'api_constants.dart';
         }
       }
     }
+
+  Future<AddMovieToFavorite> addMovieToFavorite({
+    required int movieId,
+    required String name,
+    required double rating,
+    required String imageURL,
+    required int year,
+  }) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString("token") ?? "";
+      final response = await dio.post(
+        EndPoints.addMovieToFavoriteApi,
+        data: {
+          "movieId": movieId,
+          "name": name,
+          "rating": rating,
+          "imageURL": imageURL,
+          "year": year,
+        },
+      options: Options(
+          headers: {
+            "Authorization": "Bearer $token",
+          },
+        ),
+      );
+      return AddMovieToFavorite.fromJson(response.data);
+    } on DioException catch (e) {
+      final serverMessage = e.response?.data?['message'] ;
+      throw Exception(serverMessage);
+    } catch (e) {
+      throw Exception("Unexpected error: $e");
+    }
+
+  }
+  Future<MovieIsFavorite> movieIsFavorite({required int movieId}) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString("token") ?? "";
+      final response = await dio.get(
+        "${EndPoints.movieIsFavoriteApi}$movieId",
+        options: Options(
+          headers: {
+            "Authorization": "Bearer $token",
+          },
+        ),
+      );
+
+      return MovieIsFavorite.fromJson(response.data);
+
+    } on DioException catch (e) {
+      final serverMessage = e.response?.data?['message'];
+      throw Exception(serverMessage);
+    } catch (e) {
+      throw Exception("Unexpected error: $e");
+    }
+  }
+  Future<MovieIsFavorite> removeMovie({required int movieId}) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString("token") ?? "";
+      final response = await dio.delete(
+        "${EndPoints.removeMovieApi}$movieId",
+        options: Options(
+          headers: {
+            "Authorization": "Bearer $token",
+          },
+        ),
+      );
+      return MovieIsFavorite.fromJson(response.data);
+    } on DioException catch (e) {
+      final serverMessage = e.response?.data?['message'];
+      throw Exception(serverMessage);
+    } catch (e) {
+      throw Exception("Unexpected error: $e");
+    }
+  }
+  Future<GetAllFavoritesMovies> getAllFavoritesMovies() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString("token") ?? "";
+
+      final response = await dio.get(
+        EndPoints.getAllFavoriteMoviesApi,
+        options: Options(
+          headers: {
+            "Authorization": "Bearer $token",
+          },
+        ),
+      );
+
+      return GetAllFavoritesMovies.fromJson(response.data);
+
+    } on DioException catch (e) {
+      print("🔥 DIO ERROR: ${e.response?.data}");
+      final serverMessage = e.response?.data?['message'];
+      throw Exception(serverMessage);
+    } catch (e) {
+      throw Exception("Unexpected error: $e");
+    }
+  }
   }

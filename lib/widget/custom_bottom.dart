@@ -11,6 +11,7 @@ class CustomButton extends StatelessWidget {
   final double width;
   final double height;
   final Widget? icon;
+  final Widget? suffixIcon;
 
    CustomButton({
     super.key,
@@ -22,6 +23,7 @@ class CustomButton extends StatelessWidget {
     this.onTap,
     required this.textFont,
     this.icon,
+    this.suffixIcon
   });
 
   @override
@@ -53,6 +55,9 @@ class CustomButton extends StatelessWidget {
               style: textFont,
               textAlign: TextAlign.center,
             ),
+            if (suffixIcon!=null) ?
+              suffixIcon
+
           ],
         ),
       ),

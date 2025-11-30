@@ -3,6 +3,7 @@ import 'package:move/utils/app_color.dart';
 
 import '../../api/api_service .dart';
 import '../../model/MoviesResponse.dart';
+import '../../shared_helper/shared_helper.dart';
 import '../../utils/app_routs.dart';
 import '../../widget/custom_text_faild.dart';
 import '../browse/widgets/card_movie.dart';
@@ -86,10 +87,20 @@ class _SearchTapState extends State<SearchTap> {
                       ),
                       itemBuilder: (context, index) {
                         return InkWell(
-                          onTap: () => Navigator.of(context).pushNamed(
-                            AppRouts.movieDetailsScreenRouteName,
-                            arguments: movieList[index].id,
-                          ),
+                          onTap: () async {
+                            await SharedHelper.saveMovie({
+                              "id": movieList[index].id,
+                              "title": movieList[index].title,
+                              "image": movieList[index].largeCoverImage,
+                              "rating": movieList[index].rating,
+                              "year": movieList[index].year,
+                            });
+                            Navigator.of(context).pushNamed(
+                              AppRouts.movieDetailsScreenRouteName,
+                              arguments: movieList[index].id,
+                            );
+
+                          } ,
                           child: CardMovie(movie: movieList[index]),
                         );
                       },

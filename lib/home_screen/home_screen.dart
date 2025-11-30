@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:move/tabs/profile/profile_tab.dart';
 import 'package:move/utils/app_color.dart';
 
 import '../tabs/browse/browse_tap.dart';
@@ -21,14 +22,13 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeTap(),
     SearchTap(),
     BrowseTap(),
-    UpdateProfile(),
+    ProfileTab(),
   ];
 
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: AppColor.transparentColor,
       body: tabs[selectedIndex],

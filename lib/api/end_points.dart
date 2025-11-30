@@ -8,4 +8,8 @@ class EndPoints{
   static const String getMovieListApi="https://yts.lt/api/v2/list_movies.json";
   static const String getMovieDetailsApi="https://yts.lt/api/v2/movie_details.json";
   static const String getMovieSuggestionsApi="https://yts.lt/api/v2/movie_suggestions.json";
+  static const String addMovieToFavoriteApi="favorites/add";
+  static const String movieIsFavoriteApi="favorites/is-favorite/";
+  static const String removeMovieApi="favorites/remove/";
+  static const String getAllFavoriteMoviesApi="favorites/all";
 }

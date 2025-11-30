@@ -1,12 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:move/model/AddMovieToFavorite.dart';
 import 'package:move/tabs/home/widgets/card_medium.dart';
 import 'package:move/tabs/home/movie_details_screen/widgets/likes_or_time_rating_container.dart';
 import 'package:move/tabs/home/movie_details_screen/widgets/screen_shots_container.dart';
 import 'package:move/utils/app_assets.dart';
 import 'package:move/utils/app_routs.dart';
+import 'package:move/widget/alert_dialog_utils.dart';
 import '../../../api/api_service .dart';
 import '../../../model/MovieDetailsResponse.dart';
+import '../../../model/MovieIsFavorite.dart';
 import '../../../model/MovieSuggestionsResponse.dart';
 import '../../../utils/app_color.dart';
 import '../../../utils/app_fonts.dart';
@@ -14,7 +17,6 @@ import '../../../widget/custom_bottom.dart';
 import 'widgets/cast_containar.dart';
 import 'widgets/similar_movie_card.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 
 class MovieDetailsScreen extends StatefulWidget {
   MovieDetailsScreen({super.key});
@@ -47,6 +49,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
 
       loadMovieDetails();
       loadMovieSuggestions();
+      loadFavoriteStatus();
     });
   }
 
@@ -83,6 +86,15 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
     } catch (e) {
       movieSuggestions = [];
     }
+  }
+
+  bool? isFavorite;
+
+  Future<void> loadFavoriteStatus() async {
+    final response = await ApiService().movieIsFavorite(movieId: movieId!);
+    setState(() {
+      isFavorite = response.data;
+    });
   }
 
   @override
@@ -156,7 +168,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(
-                          onPressed: () => Navigator.pop(context),
+                          onPressed: () => Navigator.of(context).pop(true),
                           icon: const Icon(
                             Icons.arrow_back_ios_new_outlined,
                             size: 35,
@@ -167,33 +179,80 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           padding: EdgeInsets.symmetric(
                             horizontal: width * 0.02,
                           ),
-                          child: Image.asset(
-                            AppAssets.watchListIcon,
-                            height: 35,
+                          child: InkWell(
+                            onTap: () async {
+                              try {
+                                if (isFavorite == true) {
+                                  final response = await ApiService()
+                                      .removeMovie(movieId: movieDetails!.id);
+                                  setState(() {
+                                    isFavorite = false;
+                                  });
+                                  AlertDialogUtils.showMessage(
+                                    context: context,
+                                    msg: response.message.toString(),
+                                    title: "Removed form Favorite",
+                                    pos: "Ok",
+                                    posAction: () => Navigator.pop(context),
+                                  );
+                                } else {
+                                  final response = await ApiService()
+                                      .addMovieToFavorite(
+                                        movieId: movieDetails!.id,
+                                        name: movieDetails!.title,
+                                        rating: movieDetails!.rating,
+                                        imageURL: movieDetails!.largeCoverImage,
+                                        year: movieDetails!.year,
+                                      );
+                                  setState(() {
+                                    isFavorite = true;
+                                  });
+                                  AlertDialogUtils.showMessage(
+                                    context: context,
+                                    msg: response.message.toString(),
+                                    title: "Added",
+                                    pos: "Ok",
+                                    posAction: () => Navigator.pop(context),
+                                  );
+                                }
+                              } catch (e) {
+                                AlertDialogUtils.showMessage(
+                                  context: context,
+                                  msg: e.toString(),
+                                );
+                              }
+                            },
+                            child: Image.asset(
+                              isFavorite == true
+                                  ? AppAssets.watchListIcon
+                                  : AppAssets.notWatchList,
+                              height: 35,
+                            ),
                           ),
                         ),
                       ],
                     ),
-
                     Positioned(
                       left: 0,
                       right: 0,
                       top: 40,
-                      child:
-                      InkWell(
+                      child: InkWell(
                         onTap: () async {
-
-                          final Uri uri = Uri.tryParse(movieDetails!.url) ?? Uri();
+                          final Uri uri =
+                              Uri.tryParse(movieDetails!.url) ?? Uri();
                           if (await canLaunchUrl(uri)) {
                             await launchUrl(uri, mode: LaunchMode.inAppWebView);
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text("Can't open this URL")),
+                              const SnackBar(
+                                content: Text("Can't open this URL"),
+                              ),
                             );
                           }
                         },
                         child: Image.asset(AppAssets.watch),
-                      ),                    ),
+                      ),
+                    ),
                     Positioned(
                       bottom: height * 0.04,
                       left: 0,
@@ -234,9 +293,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                     }
                   },
                 ),
-
                 SizedBox(height: height * 0.02),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

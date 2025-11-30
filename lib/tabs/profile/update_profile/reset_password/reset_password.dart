@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:move/shared_helper/shared_helper.dart';
 import '../../../../api/api_service .dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../../utils/app_assets.dart';
@@ -75,12 +74,11 @@ class ResetPassword extends StatelessWidget {
                       return;
                     }
                     try {
-                      final prefs = await SharedPreferences.getInstance();
-                      final token = prefs.getString("token") ?? "";
+                      var token= SharedHelper.getToken();
                       final response = await ApiService().resetPassword(
                         oldPassword: oldPasswordController.text,
                         newPassword: newPasswordController.text,
-                        token: token,
+                        token: await token,
                       );
                       Navigator.pop(context);
                       ScaffoldMessenger.of(context).showSnackBar(

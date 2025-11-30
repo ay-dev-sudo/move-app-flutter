@@ -11,10 +11,9 @@ import 'package:move/utils/app_routs.dart';
 import 'package:move/widget/custom_bottom.dart';
 import 'package:move/widget/custom_text_faild.dart';
 import 'package:move/widget/switch.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../l10n/app_localizations.dart';
+import '../shared_helper/shared_helper.dart';
 import '../widget/alert_dialog_utils.dart';
 
 class Login extends StatefulWidget {
@@ -223,16 +222,10 @@ class _LoginState extends State<Login> {
         AlertDialogUtils.hideLoading(context: context);
 
         final message = response.message ?? "";
-        final token = response.data ?? "";
 
         if (message == "Success Login") {
-
-          if (token.isNotEmpty) {
-            final prefs = await SharedPreferences.getInstance();
-            await prefs.setString("token", token);
-            print("Token saved successfully: $token");
-          }
-
+          SharedHelper.setToken("${response.data}");
+          print(response.data);
           AlertDialogUtils.showMessage(
             context: context,
             msg: message,

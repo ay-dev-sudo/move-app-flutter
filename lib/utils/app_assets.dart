@@ -40,4 +40,5 @@ class AppAssets{
   static const String timeYellow = 'assets/images/time_yellow.png';
   static const String cast1 = 'assets/images/cast1.png';
   static const String watch = 'assets/images/watch.png';
+  static const String notWatchList = 'assets/images/not_watchList_icon.png';
 }

@@ -5,6 +5,7 @@ import 'package:move/tabs/browse/widgets/genres_tap_widget.dart';
 import 'package:move/utils/app_color.dart';
 import 'package:move/utils/app_routs.dart';
 import '../../api/api_service .dart';
+import '../../shared_helper/shared_helper.dart';
 import '../../utils/app_fonts.dart';
 
 class BrowseTap extends StatefulWidget {
@@ -159,10 +160,21 @@ class _BrowseTapState extends State<BrowseTap> {
                             itemBuilder: (context, index) {
                               final movie = moviesListByGenre[index];
                               return InkWell(
-                                onTap: () => Navigator.of(context).pushNamed(
-                                  AppRouts.movieDetailsScreenRouteName,
-                                  arguments: movie.id,
-                                ),
+
+                                onTap: () async {
+                                  await SharedHelper.saveMovie({
+                                    "id": movie.id,
+                                    "title": movie.title,
+                                    "image": movie.largeCoverImage,
+                                    "rating": movie.rating,
+                                    "year": movie.year,
+                                  });
+                                  Navigator.of(context).pushNamed(
+                                    AppRouts.movieDetailsScreenRouteName,
+                                    arguments: movie.id,
+                                  );
+                                },
+
                                 child: CardMovie(movie: movie),
                               );
                             },
