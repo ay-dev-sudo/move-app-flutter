@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:move/shared_helper/shared_helper.dart';
+import 'package:move/tabs/profile/update_profile/reset_password/reset_password_cubit/reset_password_states.dart';
+import 'package:move/tabs/profile/update_profile/reset_password/reset_password_cubit/reset_password_view_model.dart';
 import '../../../../api/api_service .dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../../utils/app_assets.dart';
@@ -8,12 +11,15 @@ import '../../../../utils/app_fonts.dart';
 import '../../../../widget/custom_bottom.dart';
 import '../../../../widget/custom_text_faild.dart';
 
-class ResetPassword extends StatelessWidget {
+class ResetPassword extends StatefulWidget {
   ResetPassword({super.key});
 
-  final TextEditingController oldPasswordController = TextEditingController();
-  final TextEditingController newPasswordController = TextEditingController();
-  final TextEditingController confirmNewPasswordController = TextEditingController();
+  @override
+  State<ResetPassword> createState() => _ResetPasswordState();
+}
+
+class _ResetPasswordState extends State<ResetPassword> {
+  final ResetPasswordViewModel viewModel = ResetPasswordViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -23,79 +29,91 @@ class ResetPassword extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColor.black,
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.resetPassword,
-            style: AppFonts.regular20yellow),
+        title: Text(
+          AppLocalizations.of(context)!.resetPassword,
+          style: AppFonts.regular20yellow,
+        ),
         centerTitle: true,
         backgroundColor: AppColor.black,
-        automaticallyImplyLeading: true,
         iconTheme: IconThemeData(color: AppColor.yellow),
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: width * 0.02),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(height: height * 0.04),
-              CustomTextField(
-                hint: AppLocalizations.of(context)!.oldPassword,
-                isPassword: true,
-                controller: oldPasswordController,
-                icon: Image.asset(AppAssets.pas),
+
+      body: BlocListener<ResetPasswordViewModel, ResetPasswordStates>(
+        bloc: viewModel,
+        listener: (context, state) {
+          if (state is ResetPasswordErrorState) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(backgroundColor: AppColor.red, content: Text(state.message)),
+            );
+          }
+
+          if (state is ResetPasswordSuccessState) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(backgroundColor: AppColor.green, content: Text(state.response)),
+            );
+            Navigator.pop(context);
+          }
+        },
+
+        child: BlocBuilder<ResetPasswordViewModel, ResetPasswordStates>(
+          bloc: viewModel,
+          builder: (context, state) {
+            if (state is ResetPasswordLoadingState) {
+              return  Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: width * 0.02),
+              child: Column(
+                children: [
+                  SizedBox(height: height * 0.04),
+
+                  CustomTextField(
+                    hint: AppLocalizations.of(context)!.oldPassword,
+                    isPassword: true,
+                    controller: viewModel.oldPasswordController,
+                    icon: Image.asset(AppAssets.pas),
+                  ),
+
+                  SizedBox(height: height * 0.04),
+
+                  CustomTextField(
+                    hint: AppLocalizations.of(context)!.newPassword,
+                    isPassword: true,
+                    controller: viewModel.newPasswordController,
+                    icon: Image.asset(AppAssets.pas),
+                  ),
+
+                  SizedBox(height: height * 0.04),
+
+                  CustomTextField(
+                    hint: AppLocalizations.of(context)!.confirmNewPassword,
+                    isPassword: true,
+                    controller: viewModel.confirmNewPasswordController,
+                    icon: Image.asset(AppAssets.pas),
+                  ),
+
+                  const Spacer(),
+
+                  CustomButton(
+                    text: AppLocalizations.of(context)!.resetPassword,
+                    color: AppColor.red,
+                    borderColor: Colors.red,
+                    width: width * 0.93,
+                    height: height * 0.06,
+                    textFont: AppFonts.regular20white,
+                    onTap: () => viewModel.resetPassword(),
+                  ),
+
+                  SizedBox(height: height * 0.02),
+                ],
               ),
-              SizedBox(height: height * 0.04),
-              CustomTextField(
-                hint: AppLocalizations.of(context)!.newPassword,
-                isPassword: true,
-                controller: newPasswordController,
-                icon: Image.asset(AppAssets.pas),
-              ),
-              SizedBox(height: height * 0.04),
-              CustomTextField(
-                hint: AppLocalizations.of(context)!.confirmNewPassword,
-                isPassword: true,
-                controller: confirmNewPasswordController,
-                icon: Image.asset(AppAssets.pas),
-              ),
-              SizedBox(height: height * 0.02),
-              Spacer(),
-              CustomButton(
-                text: AppLocalizations.of(context)!.resetPassword,
-                color: AppColor.red,
-                borderColor: Colors.red,
-                width: width * 0.93,
-                height: height * 0.06,
-                textFont: AppFonts.regular20white,
-                  onTap: () async {
-                    if (newPasswordController.text != confirmNewPasswordController.text) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(backgroundColor: AppColor.red,content: Text("Passwords do not match")),
-                      );
-                      return;
-                    }
-                    try {
-                      var token= SharedHelper.getToken();
-                      final response = await ApiService().resetPassword(
-                        oldPassword: oldPasswordController.text,
-                        newPassword: newPasswordController.text,
-                        token: await token,
-                      );
-                      Navigator.pop(context);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(backgroundColor: AppColor.green,content: Text(response)),
-                      );
-                    } catch (e) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(backgroundColor: AppColor.red,content: Text(e.toString())),
-                      );
-                    }
-                  }
-              ),
-              SizedBox(height: height * 0.02),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );
   }
 }
+

@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
         AppRouts.loginRouteName: (context) =>  Login(),
         AppRouts.registerRouteName: (context) => const Register(),
         AppRouts.forgetRouteName: (context) => const Forget(),
-        AppRouts.updateProfileRouteName: (context) => const UpdateProfile(),
+        AppRouts.updateProfileRouteName: (context) =>  UpdateProfileScreen(),
         AppRouts.resetPasswordRouteName: (context) =>  ResetPassword(),
         AppRouts.homeScreenRouteName: (context) =>  HomeScreen(),
         AppRouts.movieDetailsScreenRouteName: (context) =>  MovieDetailsScreen(),
